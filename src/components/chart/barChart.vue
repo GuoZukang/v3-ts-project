@@ -23,7 +23,6 @@ let props = withDefaults(
 
 // 柱状图的配置项
 const option = {
-  backgroundColor: props.bgColor,
   title: {
     text: props.title,
     subtext: props.subtext,

@@ -43,14 +43,14 @@ export const userStore = defineStore(
     const filterRouter = () => {
       const viewsModules = parseRouteKey()
       const menus = dynamicImportComponent(menuList.value, viewsModules)
-      console.log(menus)
+      // console.log(menus)
       addRouter(menus)
     }
 
     // 动态添加路由
     const addRouter = (newRouter: any) => {
       dynamicRoutes[0].children = [...(newRouter || []), ...errorRouters]
-      console.log('dynamicRoutes', dynamicRoutes)
+      // console.log('dynamicRoutes', dynamicRoutes)
       dynamicRoutes.forEach((item) => {
         router.addRoute(item)
       })
@@ -75,7 +75,7 @@ export const userStore = defineStore(
     // 处理导入组件的key值
     const parseRouteKey = () => {
       const modules = import.meta.glob(['@/views/**/index.vue', '!@/views/**/components'])
-      console.log('modules=>', modules)
+      // console.log('modules=>', modules)
       const views: Record<string, RouteComponent> = Object.keys(modules).reduce(
         (pre, cur) => Object.assign(pre, { [cur.replace(/\/src\/views/, '')]: modules[cur] }),
         {}

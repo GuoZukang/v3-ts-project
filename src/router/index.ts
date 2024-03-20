@@ -11,32 +11,11 @@ export const dynamicRoutes: RouteRecordRaw[] = [
       // 如果isBreadcrumb 为 false 的话, 标识不会把根路由数据放到面包屑导航
       isBreadcrumb: false
     },
-    children: [
-      // {
-      //   path: '/401',
-      //   name: 'NoPermission',
-      //   component: () => import('@/views/error/401.vue'),
-      //   meta: {
-      //     title: '401页面',
-      //     icon: 'ele-Warning',
-      //     cache: true,
-      //     hidden: false
-      //   }
-      // },
-      // {
-      //   path: '/:path(.*)*', // 404匹配其他路由地址
-      //   name: 'NotFound',
-      //   component: () => import('@/views/error/404.vue'),
-      //   meta: {
-      //     title: '未找到此页面',
-      //     cache: true,
-      //     hidden: true
-      //   }
-      // }
-    ]
+    children: []
   }
 ]
-export const errorRouters: RouteRecordRaw[] = [
+
+export const errorRoutes: RouteRecordRaw[] = [
   {
     path: '/401',
     name: 'NoPermission',
@@ -59,18 +38,17 @@ export const errorRouters: RouteRecordRaw[] = [
     }
   }
 ]
+
 // 静态路由
 const staticRoutes: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/login/index.vue'),
-    meta: {
-      title: '登录',
-      icon: 'ele-Login',
-      cache: false,
-      hidded: true
-    }
+    component: () => import('@/views/auth/login.vue')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/error/404.vue')
   }
 ]
 
@@ -81,25 +59,26 @@ const router = createRouter({
 
 export default router
 
+
 // {
 //   path: '/home',
-//   name: 'Home',
+//     name: 'Home',
 //   component: () => import('@/views/home/index.vue'),
 //   meta: {
-//     title: '首页',
+//   title: '首页',
 //     icon: 'ele-House',
 //     cache: true,
 //     hidden: false
-//   }
+// }
 // },
 // {
 //   path: '/system',
-//   name: 'System',
+//     name: 'System',
 //   redirect: '/system/menu',
 //   meta: {
-//     title: '系统管理',
+//   title: '系统管理',
 //     icon: 'ele-Setting'
-//   },
+// },
 //   children: [
 //     {
 //       path: '/system/menu',
@@ -138,14 +117,14 @@ export default router
 // },
 // {
 //   path: '/goods',
-//   name: 'Goods',
+//     name: 'Goods',
 //   redirect: '/goods/list',
 //   meta: {
-//     title: '商品管理',
+//   title: '商品管理',
 //     icon: 'ele-Goods',
 //     cache: true,
 //     hidden: false
-//   },
+// },
 //   children: [
 //     {
 //       path: '/goods/list',
@@ -173,13 +152,13 @@ export default router
 // },
 // {
 //   path: '/usian',
-//   name: 'Usian',
+//     name: 'Usian',
 //   component: () => import('@/views/link/index.vue'),
 //   meta: {
-//     title: '积云官网',
+//   title: '积云官网',
 //     icon: 'ele-Link',
 //     cache: false,
 //     hidden: false,
 //     linkTo: 'https://www.usian.com' // 外链跳转地址
-//   }
+// }
 // }

@@ -1,4 +1,12 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useAuthStore } from '@/stores/auth'
+import { computed } from 'vue'
+
+const store = useAuthStore()
+const cacheNames = computed(() => {
+  return store.cacheName
+})
+</script>
 
 <template>
   <!--右侧主区域-->
@@ -7,7 +15,7 @@
       <div class="layout-main-warp">
         <router-view v-slot="{ Component }">
           <transition mode="out-in" name="fade-transform">
-            <keep-alive :include="['Home']">
+            <keep-alive :include="cacheNames">
               <component :is="Component"></component>
             </keep-alive>
           </transition>

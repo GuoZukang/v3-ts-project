@@ -1,13 +1,6 @@
-<template>
-  <el-card shadow="hover">
-    <div ref="chartRef" :style="{ width: props.width, height: props.height }"></div>
-  </el-card>
-</template>
-
 <script lang="ts" setup>
 import { useCharts } from '@/hooks/useCharts'
 
-// 接受父组件传递的参数
 let props = withDefaults(
   defineProps<{
     title?: string
@@ -17,16 +10,18 @@ let props = withDefaults(
     width?: string
     height?: string
     data: number
+    xAxisData?: any[]
   }>(),
   {
     width: '100%',
     height: '380px'
+    // data: () => [],
+    // xAxisData: () => []
   }
 )
 
-// 3. 定义图标的配置项
+// 气温仪表盘配置项
 const option = {
-  backgroundColor: props.bgColor,
   title: {
     text: props.title
   },
@@ -94,7 +89,7 @@ const option = {
       },
       data: [
         {
-          value: 38
+          value: props.data
         }
       ]
     },
@@ -116,7 +111,7 @@ const option = {
         show: true
       },
       axisLine: {
-        show: false
+        show: true
       },
       axisTick: {
         show: true
@@ -138,10 +133,17 @@ const option = {
     }
   ]
 }
+
 const { chartRef } = useCharts({
   props,
   option
 })
 </script>
+
+<template>
+  <el-card shadow="hover">
+    <div ref="chartRef" :style="{ width: props.width, height: props.height }"></div>
+  </el-card>
+</template>
 
 <style lang="scss" scoped></style>

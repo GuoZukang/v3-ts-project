@@ -2,6 +2,7 @@ import type { RouteComponent } from 'vue-router'
 
 export type MenuItemType = {
   children?: Child[] | any[]
+  // component?: any
   component?: string | RouteComponent
   meta: ChildMeta
   name: string

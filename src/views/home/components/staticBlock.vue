@@ -93,7 +93,7 @@ loadStaticData()
             </el-tooltip>
           </div>
           <div class="item-num">
-            <span>{{ StaticData[item.column] }}</span>
+            <span>{{ StaticData[item!.column] }}</span>
             <span class="unit">{{ item.unit }}</span>
           </div>
         </el-card>
